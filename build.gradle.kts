@@ -6,11 +6,14 @@ plugins {
     id("net.mamoe.mirai-console") version "2.6.6"
 }
 
-group = "org.example"
+group = "al.nya"
 version = "0.1.0"
 
 repositories {
     mavenLocal()
     maven("https://maven.aliyun.com/repository/public") // 阿里云国内代理仓库
     mavenCentral()
+}
+dependencies{
+    implementation( files("./libs/MiraiPluginExtendsAPI-0.1.0.jar"))
 }
