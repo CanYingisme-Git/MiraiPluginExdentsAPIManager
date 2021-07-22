@@ -74,6 +74,7 @@ public class Manager extends Module {
         sb.append(EventManager.gtetEventProcessingTimes());
         sb.append("\n平均处理时间");
         sb.append(EventManager.getAverageEventProcessingTime());
+        event.getGroup().sendMessage(sb.toString());
     }
     private void sendStatus(GroupMessageEvent event){
         String str = "";
