@@ -1,5 +1,6 @@
 package al.nya.pluginextendsapi.manager.modules;
 
+import al.nya.pluginextendsapi.event.EventManager;
 import al.nya.pluginextendsapi.manager.ManagerConfig;
 import al.nya.pluginextendsapi.manager.MiraiPluginExtendsAPIManager;
 import al.nya.pluginextendsapi.modules.Module;
@@ -33,6 +34,8 @@ public class Manager extends Module {
                             if (((GroupMessageEvent) event).getSender().getId() == ManagerConfig.getOwner()) sendHelp((GroupMessageEvent) event);
                         }else if (commands[1].equalsIgnoreCase("status")){
                             if (((GroupMessageEvent) event).getSender().getId() == ManagerConfig.getOwner()) sendStatus((GroupMessageEvent) event);
+                        }else if (commands[1].equalsIgnoreCase("aept")){
+                            if (((GroupMessageEvent) event).getSender().getId() == ManagerConfig.getOwner()) sendAEPT((GroupMessageEvent) event);
                         }
                     }else if (commands.length == 3){
                         if (commands[1].equalsIgnoreCase("enable")){
@@ -47,6 +50,30 @@ public class Manager extends Module {
             if (ManagerConfig.autoAccept())
             ((BotInvitedJoinGroupRequestEvent) event).accept();
         }
+    }
+    private void sendAEPT(GroupMessageEvent event){
+        StringBuilder sb = new StringBuilder();
+        sb.append("事件相应信息:+\n");
+        sb.append("一共有");
+        sb.append(ModuleManager.getModules().size());
+        sb.append("个模块被加载\n");
+        int d = 0;
+        int e = 0;
+        for (Module module : ModuleManager.getModules()) {
+            if (module.isEnable()){
+                e += 1;
+            }else {
+                d += 1;
+            }
+        }
+        sb.append(e);
+        sb.append("启用");
+        sb.append(d);
+        sb.append("禁用\n");
+        sb.append("事件处理次数:");
+        sb.append(EventManager.gtetEventProcessingTimes());
+        sb.append("\n平均处理时间");
+        sb.append(EventManager.getAverageEventProcessingTime());
     }
     private void sendStatus(GroupMessageEvent event){
         String str = "";
