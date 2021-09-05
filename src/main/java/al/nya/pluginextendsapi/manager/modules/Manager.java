@@ -53,7 +53,7 @@ public class Manager extends Module {
     }
     private void sendAEPT(GroupMessageEvent event){
         StringBuilder sb = new StringBuilder();
-        sb.append("事件相应信息:+\n");
+        sb.append("事件相应信息:\n");
         sb.append("一共有");
         sb.append(ModuleManager.getModules().size());
         sb.append("个模块被加载\n");
@@ -72,8 +72,9 @@ public class Manager extends Module {
         sb.append("禁用\n");
         sb.append("事件处理次数:");
         sb.append(EventManager.gtetEventProcessingTimes());
-        sb.append("\n平均处理时间");
+        sb.append("\n平均处理时间:");
         sb.append(EventManager.getAverageEventProcessingTime());
+        sb.append("ms");
         event.getGroup().sendMessage(sb.toString());
     }
     private void sendStatus(GroupMessageEvent event){
