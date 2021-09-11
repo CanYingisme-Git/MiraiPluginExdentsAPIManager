@@ -53,7 +53,7 @@ public class Manager extends Module {
     }
     private void sendAEPT(GroupMessageEvent event){
         StringBuilder sb = new StringBuilder();
-        sb.append("事件相应信息:\n");
+        sb.append("事件响应信息:\n");
         sb.append("一共有");
         sb.append(ModuleManager.getModules().size());
         sb.append("个模块被加载\n");
